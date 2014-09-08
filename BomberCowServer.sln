@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BomberCowServer", "BomberCowServer\BomberCowServer.csproj", "{78E90F33-3E23-4555-A30A-D6575B6EA8BD}"
 EndProject
 Global
