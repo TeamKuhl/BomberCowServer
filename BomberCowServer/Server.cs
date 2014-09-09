@@ -139,7 +139,7 @@ namespace BomberCowServer
 
                 //message has successfully been received
                 ASCIIEncoding encoder = new ASCIIEncoding();
-                System.Diagnostics.Debug.WriteLine(encoder.GetString(message, 0, bytesRead));
+                Console.WriteLine(encoder.GetString(message, 0, bytesRead));
             }
 
             // remove from array

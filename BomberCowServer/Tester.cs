@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace BomberCowServer
 {
-    class Main
+    class Tester
     {
         static void Main(string[] args)
         {
+            // create server
+            Server server = new Server();
+            server.start(45454);
+            Console.WriteLine("Server started");
         }
     }
 }
