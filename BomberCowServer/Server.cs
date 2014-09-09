@@ -97,6 +97,7 @@ namespace BomberCowServer
                 //with connected client
                 Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClientComm));
                 clientThread.Start(client);
+                Console.WriteLine("Connect");
             }
         }
 
@@ -139,13 +140,16 @@ namespace BomberCowServer
 
                 //message has successfully been received
                 ASCIIEncoding encoder = new ASCIIEncoding();
-                Console.WriteLine(encoder.GetString(message, 0, bytesRead));
+                String newstring = encoder.GetString(message, 0, bytesRead);
+                Console.WriteLine(newstring);
+                this.sendToAll(newstring + " from Server");
             }
 
             // remove from array
             this.allClients.Remove(tcpClient);
 
             tcpClient.Close();
+            Console.WriteLine("Disconect");
         }
 
     }
