@@ -11,7 +11,6 @@ namespace BomberCowServer
 
     class Server
     {
-
         // TCP
         private TcpListener tcpListener;
         private Thread listenThread;
@@ -32,15 +31,6 @@ namespace BomberCowServer
             this.listenThread.Start();
 
             return true;
-        }
-
-        /// <summary>
-        ///     Stops the server
-        /// </summary>
-        /// <returns>Success of stop process.</returns>
-        public Boolean stop()
-        {
-            return false;
         }
 
         /// <summary>
@@ -81,6 +71,25 @@ namespace BomberCowServer
             return false;
         }
 
+        /// <summary>
+        ///     Send data to all clients except one
+        /// </summary>
+        /// <param name="message">The message to send.</param>
+        /// <param name="exception">The client who wont get the message</param>
+        /// <returns>Success of send process.</returns>
+        public Boolean sendToAllExcept(TcpClient exception, String message)
+        {
+            // loop all clients
+            foreach (TcpClient client in this.allClients)
+            {
+                if (client != exception)
+                {
+                    // send message
+                    this.send(client, message);
+                }
+            }
+            return false;
+        }
         /// <summary>
         ///     Listener for Communication
         /// </summary>
@@ -142,7 +151,7 @@ namespace BomberCowServer
                 ASCIIEncoding encoder = new ASCIIEncoding();
                 String newstring = encoder.GetString(message, 0, bytesRead);
                 Console.WriteLine(newstring);
-                this.sendToAll(newstring + " from Server");
+                this.sendToAllExcept(tcpClient, newstring);
             }
 
             // remove from array
