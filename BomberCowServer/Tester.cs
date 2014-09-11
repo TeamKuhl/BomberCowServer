@@ -25,20 +25,14 @@ namespace BomberCowServer
                 String input = Console.ReadLine();
                 if (input == "stop")
                 {
-                    log.warn("Server is shutting down");
-                    log.close();
-                    server.sendToAll("server_stop");
-                    Environment.Exit(0);
+                    server.stop();
+                    //log.close();
+                    //server.sendToAll("server_stop");
+                    //Environment.Exit(0);
                 }
                 if (input == "start")
                 {
-                    if (server.start(45454))
-                    {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Server started");
-                        Console.ResetColor();
-                    }
-                    else log.error("Server konnte nicht gestartet werden");
+                    server.start(45454);
                 }
                 if (input == "sendall")
                 {
