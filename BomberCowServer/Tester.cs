@@ -26,6 +26,7 @@ namespace BomberCowServer
                 if (input == "stop")
                 {
                     log.warn("Server is shutting down");
+                    log.close();
                     server.sendToAll("server_stop");
                     Environment.Exit(0);
                 }
