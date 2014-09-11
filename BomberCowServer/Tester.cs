@@ -13,7 +13,9 @@ namespace BomberCowServer
         {
             Console.Title = "BomberCowServer";
             // create server
-            Server server = new Server();
+            Server server = new Server(true, false);
+            //create log
+            Log log = new Log(true, false);
             //server.start(45454);
 
             while (true)
@@ -21,17 +23,19 @@ namespace BomberCowServer
                 String input = Console.ReadLine();
                 if (input == "stop")
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Server is shutting down");
+                    log.warn("Server is shutting down");
                     server.sendToAll("server_stop");
                     Environment.Exit(0);
                 }
                 if (input == "start")
                 {
-                    server.start(45454);
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("Server started");
-                    Console.ResetColor();
+                    if (server.start(45454))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("Server started");
+                        Console.ResetColor();
+                    }
+                    else log.error("Server konnte nicht gestartet werden");
                 }
                 if (input == "sendall")
                 {
