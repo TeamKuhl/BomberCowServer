@@ -12,11 +12,13 @@ namespace BomberCowServer
         static void Main(string[] args)
         {
             Console.Title = "BomberCowServer";
-            // create server
-            Server server = new Server(true, false);
+
             //create log
-            Log log = new Log(true, false);
-            //server.start(45454);
+            Log log = new Log(true, true);
+
+            // create server
+            Server server = new Server(log);
+
 
             while (true)
             {
