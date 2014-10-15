@@ -11,37 +11,15 @@ namespace BomberCowServer
     {
         static void Main(string[] args)
         {
-            Console.Title = "BomberCowServer";
+            // set console title
+            Console.Title = "BomberCowServer v0.0.0.0.0.0.0.0.00.03";
 
-            //create log
-            Log log = new Log(true, true);
+            // new game
+            Game game = new Game();
 
-            // create server
-            Server server = new Server(log);
+            // start game
+            game.start();
 
-
-            while (true)
-            {
-                String input = Console.ReadLine();
-                if (input == "stop")
-                {
-                    server.stop();
-                    //log.close();
-                    //server.sendToAll("server_stop");
-                    //Environment.Exit(0);
-                }
-                if (input == "start")
-                {
-                    server.start(45454);
-                }
-                if (input == "sendall")
-                {
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.Write("Message:");
-                    server.sendToAll("[SERVER] " +Console.ReadLine());
-                    Console.ResetColor();
-                }
-            }
         }
     }
 }
