@@ -12,7 +12,7 @@ namespace BomberCowServer
         static void Main(string[] args)
         {
             // set console title
-            Console.Title = "BomberCowServer v0.0.0.0.0.0.0.O.00.15";
+            Console.Title = "BomberCowServer v0.0.0.0.0.0.0.O.00.84";
 
             // new game
             Game game = new Game();
